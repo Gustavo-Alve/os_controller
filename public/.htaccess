@@ -1,4 +1,4 @@
 RewriteEngine On
-RewriteBase /MVC/public/
+RewriteBase /os_controller/public/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
