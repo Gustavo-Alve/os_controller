@@ -1,9 +1,15 @@
+Options -Indexes +FollowSymLinks
 RewriteEngine On
 
+# Impede loop infinito de redirecionamento interno do Apache (causa comum do 403)
+RewriteCond %{ENV:REDIRECT_STATUS} !^$
+RewriteRule ^ - [L]
+
+# Se o arquivo existir dentro de public/ (CSS, JS, imagens), entrega direto
 RewriteCond %{DOCUMENT_ROOT}/os_controller/public/$1 -f
 RewriteRule ^(.*)$ public/$1 [L]
 
-# Caso contrário, envia a rota para o index.php controlar
+# Envia qualquer outra rota para public/index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ public/index.php?url=$1 [QSA,L]

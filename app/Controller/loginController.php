@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../../core/Database.php';
 class loginController {
     public function index() {
         // Se o usuário já estiver logado, você pode redirecioná-lo para o painel/home
