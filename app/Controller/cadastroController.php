@@ -29,6 +29,7 @@ class cadastroController {
 
         // salvando no banco e redirecionando para parte de login
         if ($model->cadastrar($nome, $usuario, $senha)) {
+            // coloca o comando de alert dentro do echo
             echo "<script>alert('Cadastro realizado com sucesso!'); window.location.href='/os_controller/login';</script>";
             exit;
         } else {

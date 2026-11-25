@@ -15,14 +15,20 @@ body {
     height: 100vh;
 }
 
-/* Caixa branca do formulário */
 .login-container {
     background-color: #ffffff;
-    padding: 32px;
+    padding: 20px 32px 32px; /* topo | laterais | base */
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 360px;
+}
+
+/* Estiliza o título e cria espaço abaixo dele */
+.title {
+    margin-bottom: 32px; /* Aumente esse valor se quiser ainda mais distância dos inputs */
+    color: #1c1e21;
+    text-align: center;
 }
 
 .login-form h2 {
@@ -74,5 +80,6 @@ body {
 }
 
 .btn-enviar:hover {
-    background-color: #166fe5;
+    background-color: #48dd0d;
 }
+

@@ -10,7 +10,7 @@
 <body>
 
     <div class="login-container">
-        <form action="#" method="POST" class="login-form">
+        <form action="/os_controller/login/autenticar" method="POST" class="login-form">
             <h2>Bem vindo !</h2>
             <div class="input-group">
                 <label for="usuario">Usuário</label>

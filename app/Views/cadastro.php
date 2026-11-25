@@ -10,7 +10,12 @@
 <body>
     <div class="login-container">
         <form action="/os_controller/cadastro/salvar" method="POST" class="cadastro-form">
-            <h2>Realize seu cadastro</h2>
+            <h2 class="title">Realize seu cadastro</h2>
+
+            <div class="input-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+            </div>
 
             <div class="input-group">
                 <label for="usuario">Usuário</label>

@@ -6,6 +6,18 @@ class Router {
             session_start();
         }
 
+        $tempoLimite = 180;
+        if (isset($_SESSION['usuario_id'])) {
+            if (isset($_SESSION['ultimo_acesso']) && (time() - $_SESSION['ultimo_acesso']) > $tempoLimite) {
+                session_unset();
+                session_destroy();
+                header('Location: /os_controller/login?expirado=1');
+                exit;
+            }
+            // Se ainda está dentro do prazo, renova o cronômetro a cada clique/requisição
+            $_SESSION['ultimo_acesso'] = time();
+        };
+
         // Define 'login/index' como rota padrão (default) se a URL vier vazia
         $url = $_GET['url'] ?? 'login/index';
         //retira os espaços
