@@ -1,6 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #334155;
+    padding-top: 64px; /* Compensa a altura do header fixo */
+}
+
+/* --- CABEÇALHO FIXO NO TOPO --- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.12);
+}
+
+/* Grid de 3 colunas: garante o título 100% centralizado na tela */
+.top-bar {
+    background: linear-gradient(135deg, #16409b 0%, #1e4fc2 100%);
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 24px;
+    height: 64px;
+}
+
+/* --- NOME DO SITE (CENTRO) --- */
+.brand {
+    justify-self: center;
+}
+
+.logo-os {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.logo-os i {
+    font-size: 22px;
+    color: #93c5fd;
+}
+
+/* --- DROPDOWN DO USUÁRIO (DIREITA) --- */
 .user-actions {
-    position: relative;
-    display: inline-block;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 12px; 
 }
 
 .user-dropdown {
@@ -8,85 +65,158 @@
 }
 
 .user-btn {
+    background-color: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
     display: flex;
     align-items: center;
     gap: 10px;
-    background: #ffffff;
-    border: 1px solid #dcdcdc;
-    border-radius: 8px;
-    padding: 6px 12px;
+    padding: 6px 14px 6px 8px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 14px;
-    color: #333;
-    transition: background 0.2s;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 .user-btn:hover {
-    background: #f5f5f5;
+    background-color: rgba(255, 255, 255, 0.25);
 }
 
 .avatar {
-    width: 32px;
-    height: 32px;
+    background-color: #ffffff;
+    color: #16409b;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background-color: #2563eb;
-    color: #fff;
-    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 700;
     font-size: 14px;
 }
 
 .arrow {
     font-size: 10px;
-    color: #666;
+    opacity: 0.85;
+    transition: transform 0.2s ease;
 }
 
+/* Menu Suspenso */
 .dropdown-menu {
     display: none;
     position: absolute;
+    top: calc(100% + 10px);
     right: 0;
-    top: calc(100% + 6px);
-    background: #ffffff;
-    min-width: 180px;
+    min-width: 200px;
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    border: 1px solid #eaeaea;
-    z-index: 1000;
-    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+    border: 1px solid #e2e8f0;
+    padding: 10px 0;
+    z-index: 1001;
+    /* Suporte para .active, .open e .show */
+    .user-dropdown.active .dropdown-menu,
+    .user-dropdown.open .dropdown-menu,
+    .dropdown-menu.active,
+    .dropdown-menu.show,
+    .dropdown-menu.open {
+    display: block;
+}
 }
 
-.dropdown-menu.ativo {
+/* Suporte tanto para classe .open quanto .show no seu dropdown.js */
+.user-dropdown.open .dropdown-menu,
+.dropdown-menu.show,
+.dropdown-menu.open {
     display: block;
 }
 
 .dropdown-header {
-    padding: 10px 14px;
-    color: #666;
-    background: #fafafa;
+    padding: 6px 16px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.dropdown-header strong {
+    color: #1e293b;
+    text-transform: capitalize;
 }
 
 .dropdown-menu hr {
-    margin: 0;
     border: none;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #e2e8f0;
+    margin: 8px 0;
 }
 
 .dropdown-item {
-    display: block;
-    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
     text-decoration: none;
-    color: #333;
     font-size: 14px;
-    transition: background 0.2s;
-}
-
-.dropdown-item:hover {
-    background: #f3f4f6;
+    font-weight: 600;
+    transition: background-color 0.2s;
 }
 
 .dropdown-item.sair {
     color: #dc2626;
-    font-weight: 500;
+}
+
+.dropdown-item.sair:hover {
+    background-color: #fef2f2;
+}
+
+/* --- BARRA DE NAVEGAÇÃO (ABAS) --- */
+.nav-tabs {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    min-height: 8px; /* Fica discreta enquanto estiver vazia */
+}
+
+/* --- ÁREA DE CONTEÚDO --- */
+.content-area {
+    padding: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.btn-sair a {
+    text-decoration: none;
+    padding: 0;
+    display: block;
+}
+
+.btn-sair a:hover {
+    background-color: transparent;
+}
+
+/* Estiliza o botão SAIR para combinar com a altura do dropdown */
+.btn-sair button {
+    background-color: #df4747;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 9px 18px;
+    border-radius: 24px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-sair button:hover {
+    background-color: #c93b3b;
+}
+
+.btn-sair button:active {
+    transform: scale(0.97);
+}
+
+.logo-os img {
+    height: 70px; /* Ajuste conforme o tamanho desejado */
+    width: auto;
+    object-fit: contain;
+    display: block;
 }
